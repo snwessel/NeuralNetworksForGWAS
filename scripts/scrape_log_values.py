@@ -1,5 +1,5 @@
 # open log file
-filename = "logs/deepsea.log"
+filename = "logs/deeplift.log"
 f = open(filename, "rt")
 
 # define the values we're looking for
