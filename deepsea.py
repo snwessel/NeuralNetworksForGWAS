@@ -55,7 +55,6 @@ class DeepSEA(nn.Module):
             nn.BatchNorm1d(960),
             nn.Dropout(p=0.2))
 
-        reduce_by = 2 * (conv_kernel_size - 1)
         pool_kernel_size = float(pool_kernel_size)
         self._n_channels = 53
 
