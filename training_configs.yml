@@ -2,7 +2,7 @@
 ops: [train, evaluate]
 model: {
     # NOTE: update the values here to train a different model
-    path: /content/gdrive/My Drive/Colab Notebooks/NeuralNetworksForGWAS/models/deeperdeepsea.py,
+    path: /content/gdrive/My Drive/Colab Notebooks/NeuralNetworksForGWAS/models/cnn-variant.py,
     class: DeeperDeepSEA,
     class_args: {
         sequence_length: 1000,

@@ -11,7 +11,7 @@ import torch
 import torch.nn as nn
 
 
-class DeeperDeepSEA3(nn.Module):
+class DeeperDeepSEA(nn.Module):
     """
     A deeper DeepSEA model architecture.
     Parameters
@@ -31,12 +31,14 @@ class DeeperDeepSEA3(nn.Module):
     """
 
     def __init__(self, sequence_length, n_targets):
-        super(DeeperDeepSEA3, self).__init__()
-        conv_kernel_size = 5
+        super(DeeperDeepSEA, self).__init__()
+        conv_kernel_size = 8
         pool_kernel_size = 4
 
         self.conv_net = nn.Sequential(
             nn.Conv1d(4, 320, kernel_size=conv_kernel_size),
+            nn.ReLU(inplace=True),
+            nn.Conv1d(320, 320, kernel_size=conv_kernel_size),
             nn.ReLU(inplace=True),
             nn.Conv1d(320, 320, kernel_size=conv_kernel_size),
             nn.ReLU(inplace=True),
@@ -45,6 +47,8 @@ class DeeperDeepSEA3(nn.Module):
             nn.BatchNorm1d(320),
 
             nn.Conv1d(320, 480, kernel_size=conv_kernel_size),
+            nn.ReLU(inplace=True),
+            nn.Conv1d(480, 480, kernel_size=conv_kernel_size),
             nn.ReLU(inplace=True),
             nn.Conv1d(480, 480, kernel_size=conv_kernel_size),
             nn.ReLU(inplace=True),
@@ -57,12 +61,13 @@ class DeeperDeepSEA3(nn.Module):
             nn.ReLU(inplace=True),
             nn.Conv1d(960, 960, kernel_size=conv_kernel_size),
             nn.ReLU(inplace=True),
+            nn.Conv1d(960, 960, kernel_size=conv_kernel_size),
+            nn.ReLU(inplace=True),
             nn.BatchNorm1d(960),
             nn.Dropout(p=0.2))
 
         pool_kernel_size = float(pool_kernel_size)
-        self._n_channels = 52
-        # fully connected layer
+        self._n_channels = 34
         self.classifier = nn.Sequential(
             nn.Linear(960 * self._n_channels, n_targets),
             nn.ReLU(inplace=True),

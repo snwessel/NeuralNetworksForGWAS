@@ -30,18 +30,17 @@ class DeepLIFT(nn.Module):
 
     def __init__(self, sequence_length, n_targets):
         super(DeepLIFT, self).__init__()
-        hidden_size1 = 16000
-        # hidden_size2 = 64
-        # hidden_size3 = 256
+        hidden_size1 = 8000
+        hidden_size2 = 1000
 
         # fully connected layer
         self.classifier = nn.Sequential(
             nn.Linear(4000, hidden_size1),
             nn.ReLU(inplace=True),
-            nn.Linear(hidden_size1, n_targets),
+            nn.Linear(hidden_size1, hidden_size2),
             nn.ReLU(inplace=True),
-            nn.BatchNorm1d(n_targets),
-            nn.Linear(n_targets, n_targets),
+            nn.BatchNorm1d(hidden_size2),
+            nn.Linear(hidden_size2, n_targets),
             nn.Sigmoid())
 
     def forward(self, x):
@@ -61,7 +60,7 @@ def criterion():
     -------
     torch.nn._Loss
     """
-    return nn.BCELoss()
+    return nn.MSELoss()
 
 def get_optimizer(lr):
     """

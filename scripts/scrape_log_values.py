@@ -1,5 +1,5 @@
 # open log file
-filename = "logs/deeplift.log"
+filename = "logs/deeplift5.log"
 f = open(filename, "rt")
 
 # define the values we're looking for
@@ -26,6 +26,6 @@ for line in f:
     get_val(line, loss_string, loss_list)
 
 # print values
-print("ROC AUC:", roc_auc_list)
-print("PRECISION:", precision_list)
-print("LOSS:", loss_list)
+print("roc_auc =", roc_auc_list)
+print("precision =:", precision_list)
+print("loss =", loss_list)
