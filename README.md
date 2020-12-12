@@ -17,4 +17,4 @@ You will need to upload this directory to Google Drive, where you can train the 
 - `visualize_results.ipynb` contains visualizations to compare the performance of each model. 
 
 
-View the colab files and data in Google Drive: https://drive.google.com/drive/folders/1FBa4NZN894Q67BuwB6AkCpb3plWRZ_XB?usp=sharing 
+_View the colab files and data in [Google Drive](https://drive.google.com/drive/folders/1FBa4NZN894Q67BuwB6AkCpb3plWRZ_XB?usp=sharing)._ 
